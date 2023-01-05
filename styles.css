@@ -5,16 +5,23 @@ body {
     flex-direction: column;
 }
 
+h1 {
+    margin: 0;
+}
+
 .grid-container {
-    height: 600px;
-    width: 600px;
+    height: 560px;
+    width: 560px;
     border: 2px solid black;
     display: grid;
-    grid-template-columns: repeat(16, 2fr);
-    grid-template-rows: repeat(16, 2fr);
 }
 
 .grid-box {
     background-color: white;
     border: 1px solid black;
+}
+
+#gridNum {
+    width: 40px;
+    margin-right: 2px;
 }

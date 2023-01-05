@@ -8,10 +8,45 @@
 
 <body>
     <h1>Etch a Sketch</h1>
-    <div class="grid-container">
-        <div class="grid-box"></div>
-        <div class="grid-box"></div>
-        <div class="grid-box"></div>
-        <div class="grid-box"></div>
-    </div>
+    <p>
+        <span>Grid #</span>
+        <input id="gridNum" name="gridNum" type="number" value="16" max="64">
+        <button id="gridBtn">Reset</button>
+    </p> 
+    <div class="grid-container"></div>
+
+
+    <script>
+        let container = document.querySelector(".grid-container");
+        let grid = document.getElementById("gridNum").value;
+        let button = document.getElementById("gridBtn")
+
+        initialize(grid);
+
+        function initialize(num) {
+            container.setAttribute("style", "grid-template-columns: repeat("+grid+", 1fr);");
+
+            for (let i = 0; i < grid*grid; i++) {
+                let div = document.createElement("div");
+                div.classList.add("grid-box");
+                div.addEventListener("mousemove", () => {
+                        div.setAttribute("style", "background: black;")              
+                    });
+                container.appendChild(div);
+                }
+        }
+        
+        button.addEventListener("mousedown", () => {
+
+            while (container.firstChild) {
+                container.removeChild(container.lastChild);
+            }
+
+            grid = document.getElementById("gridNum").value;
+            if (grid > 64) {
+                grid = 64};
+
+            initialize(grid);
+        });
+    </script>
 </body>
